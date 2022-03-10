@@ -25,6 +25,8 @@ namespace PhoneBookAPI.BLL.Services
 
             if (user.Phones.Count() > 0)
                 user.Phones.First().IsMain = true;
+             else
+                throw new Exception("Phone is Required");
             
             _phoneBookContext.Users.Add(user);
             _phoneBookContext.SaveChanges();
@@ -51,6 +53,8 @@ namespace PhoneBookAPI.BLL.Services
 
             if (user.Phones.Count() > 0)
                 user.Phones.First().IsMain = true;
+             else
+                throw new Exception("Phone is Required");
             var existingUser = _phoneBookContext.Users.FirstOrDefault(u => u.Id == user.Id);
 
             if (existingUser is null)
